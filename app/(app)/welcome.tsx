@@ -29,6 +29,15 @@ export default function WelcomeScreen() {
 					size="default"
 					variant="default"
 					onPress={() => {
+						router.push("/test/home");
+					}}
+				>
+					<Text>test</Text>
+				</Button>
+				<Button
+					size="default"
+					variant="default"
+					onPress={() => {
 						router.push("/sign-up");
 					}}
 				>

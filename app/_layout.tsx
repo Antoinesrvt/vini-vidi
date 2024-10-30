@@ -1,13 +1,13 @@
 import "../global.css";
-
-import { Slot } from "expo-router";
-
+import { Stack } from "expo-router";
 import { SupabaseProvider } from "@/context/supabase-provider";
 
-export default function AppLayout() {
+export default function RootLayout() {
 	return (
 		<SupabaseProvider>
-			<Slot />
+			<Stack>
+				<Stack.Screen name="(app)" options={{ headerShown: false }} />
+			</Stack>
 		</SupabaseProvider>
 	);
 }

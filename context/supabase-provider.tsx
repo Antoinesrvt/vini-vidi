@@ -13,6 +13,8 @@ type SupabaseContextProps = {
 	signUp: (email: string, password: string) => Promise<void>;
 	signInWithPassword: (email: string, password: string) => Promise<void>;
 	signOut: () => Promise<void>;
+	resetPassword: (email: string) => Promise<void>;
+	updatePassword: (newPassword: string) => Promise<void>;
 };
 
 type SupabaseProviderProps = {
@@ -26,6 +28,8 @@ export const SupabaseContext = createContext<SupabaseContextProps>({
 	signUp: async () => {},
 	signInWithPassword: async () => {},
 	signOut: async () => {},
+	resetPassword: async () => {},
+	updatePassword: async () => {},
 });
 
 export const useSupabase = () => useContext(SupabaseContext);
@@ -64,6 +68,24 @@ export const SupabaseProvider = ({ children }: SupabaseProviderProps) => {
 		}
 	};
 
+	const resetPassword = async (email: string) => {
+		const { error } = await supabase.auth.resetPasswordForEmail(email, {
+			redirectTo: 'myapp://reset-password',
+		});
+		if (error) {
+			throw error;
+		}
+	};
+
+	const updatePassword = async (newPassword: string) => {
+		const { error } = await supabase.auth.updateUser({
+			password: newPassword
+		});
+		if (error) {
+			throw error;
+		}
+	};
+
 	useEffect(() => {
 		supabase.auth.getSession().then(({ data: { session } }) => {
 			setSession(session);
@@ -83,9 +105,9 @@ export const SupabaseProvider = ({ children }: SupabaseProviderProps) => {
 		const inProtectedGroup = segments[0] === "(protected)";
 
 		if (session && !inProtectedGroup) {
-			router.replace("/(app)/(protected)/");
+			router.replace("/(app)/(protected)");
 		} else if (!session) {
-			router.replace("/(app)/welcome");
+			router.replace("/(app)/(protected)");
 		}
 
 		/* HACK: Something must be rendered when determining the initial auth state... 
@@ -107,6 +129,8 @@ export const SupabaseProvider = ({ children }: SupabaseProviderProps) => {
 				signUp,
 				signInWithPassword,
 				signOut,
+				resetPassword,
+				updatePassword,
 			}}
 		>
 			{children}
