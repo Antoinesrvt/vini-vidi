@@ -4,6 +4,7 @@ import { Globe, Plus, Calendar, MapPin, Users, MessageCircle, Heart, X, Video, P
 import { router } from 'expo-router';
 import { useLocation } from "@/context/location-context";
 import { AnimatePresence, MotiView } from 'moti';
+import { NoteCard } from "@/components/ui/note-card";
 // import MapView, { Marker } from 'react-native-maps';
 
 // Types
@@ -307,46 +308,7 @@ const MapScreen = () => {
             {(activeFilter === 'all' || activeFilter === 'notes') && (
               <View className="space-y-4">
                 {feedData.notes.map((note) => (
-                  <View 
-                    key={note.id}
-                    className="p-4 bg-slate-50 rounded-xl border border-slate-200"
-                  >
-                    {/* Note Header */}
-                    <View className="flex-row items-center mb-3">
-                      <View className="w-10 h-10 rounded-full bg-slate-200 mr-3" />
-                      <View className="flex-1">
-                        <Text className="font-medium">{note.userName}</Text>
-                        <Text className="text-xs text-slate-600">{note.timestamp}</Text>
-                      </View>
-                    </View>
-
-                    {/* Note Content */}
-                    <Text className="text-slate-800 mb-3">{note.content}</Text>
-
-                    {/* Note Location */}
-                    <View className="flex-row items-center mb-3">
-                      <MapPin className="w-4 h-4 text-slate-400 mr-1" />
-                      <Text className="text-sm text-slate-600">{note.location}</Text>
-                    </View>
-
-                    {/* Note Actions */}
-                    <View className="flex-row items-center justify-between pt-3 border-t border-slate-200">
-                      <TouchableOpacity 
-                        className="flex-row items-center"
-                        onPress={() => {/* Handle like */}}
-                      >
-                        <Heart 
-                          className={`w-5 h-5 mr-1 ${note.hasLiked ? 'text-red-500' : 'text-slate-400'}`}
-                          fill={note.hasLiked ? '#ef4444' : 'none'}
-                        />
-                        <Text className="text-sm text-slate-600">{note.likes}</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity className="flex-row items-center">
-                        <MessageCircle className="w-5 h-5 text-slate-400 mr-1" />
-                        <Text className="text-sm text-slate-600">{note.comments}</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
+                  <NoteCard key={note.id} note={note} />
                 ))}
               </View>
             )}

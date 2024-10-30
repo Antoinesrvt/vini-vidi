@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+// import MapView, { Marker } from 'react-native-maps';
 import { WebView } from 'react-native-webview';
 
 type MapComponentProps = {
@@ -37,20 +37,21 @@ export const MapComponent = ({ latitude, longitude, interactive = true, style }:
 
   // Use react-native-maps for native platforms
   return (
-    <MapView
-      style={style}
-      initialRegion={{
-        latitude,
-        longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}
-      pitchEnabled={interactive}
-      rotateEnabled={interactive}
-      zoomEnabled={interactive}
-      scrollEnabled={interactive}
-    >
-      <Marker coordinate={{ latitude, longitude }} />
-    </MapView>
+    <></>
+    // <MapView
+    //   style={style}
+    //   initialRegion={{
+    //     latitude,
+    //     longitude,
+    //     latitudeDelta: 0.0922,
+    //     longitudeDelta: 0.0421,
+    //   }}
+    //   pitchEnabled={interactive}
+    //   rotateEnabled={interactive}
+    //   zoomEnabled={interactive}
+    //   scrollEnabled={interactive}
+    // >
+    //   <Marker coordinate={{ latitude, longitude }} />
+    // </MapView>
   );
 }; 

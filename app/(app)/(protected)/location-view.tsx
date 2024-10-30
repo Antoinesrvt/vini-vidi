@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
-import MapView, { Marker } from 'react-native-maps';
+// import MapView, { Marker } from 'react-native-maps';
 
 export default function LocationView() {
   const { latitude, longitude, location } = useLocalSearchParams();
@@ -22,7 +22,7 @@ export default function LocationView() {
 
       {/* Map */}
       <View className="flex-1">
-        <MapView
+        {/* <MapView
           style={{ width: '100%', height: '100%' }}
           initialRegion={{
             latitude: Number(latitude),
@@ -37,7 +37,7 @@ export default function LocationView() {
               longitude: Number(longitude),
             }}
           />
-        </MapView>
+        </MapView> */}
       </View>
     </View>
   );

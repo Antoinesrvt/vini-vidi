@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { router } from 'expo-router';
 import { ArrowLeft, Search, MapPin, } from 'lucide-react-native';
-import MapView, { Marker } from 'react-native-maps';
+// import MapView, { Marker } from 'react-native-maps';
 import { useLocation } from '@/context/location-context';
 
 type SuggestedLocation = {
@@ -70,7 +70,7 @@ export default function LocationPicker() {
       {/* Map Preview */}
       <View className="px-4 mb-4">
         <View className="h-48 rounded-xl overflow-hidden">
-          <MapView
+          {/* <MapView
             style={{ width: '100%', height: '100%' }}
             initialRegion={{
               latitude: 40.7128,
@@ -85,7 +85,7 @@ export default function LocationPicker() {
                 longitude: -74.0060,
               }}
             />
-          </MapView>
+          </MapView> */}
         </View>
       </View>
 
