@@ -66,12 +66,12 @@ export default function AppLayout() {
 					screenOptions={{
 						headerShown: false,
 						tabBarStyle: {
-							backgroundColor: 'white',
+							backgroundColor: "white",
 							borderTopWidth: 1,
-							borderTopColor: '#e2e8f0',
+							borderTopColor: "#e2e8f0",
 						},
-						tabBarActiveTintColor: '#2563eb',
-						tabBarInactiveTintColor: '#64748b',
+						tabBarActiveTintColor: "#2563eb",
+						tabBarInactiveTintColor: "#64748b",
 					}}
 				>
 					{/* Hidden Routes */}
@@ -111,34 +111,54 @@ export default function AppLayout() {
 							href: null,
 						}}
 					/>
+					<Tabs.Screen
+						name="location-picker"
+						options={{
+							href: null,
+						}}
+					/>
+					<Tabs.Screen
+						name="location-view"
+						options={{
+							href: null,
+						}}
+					/>
 
 					{/* Visible Tab Bar Items */}
 					<Tabs.Screen
 						name="map"
 						options={{
 							title: "Map",
-							tabBarIcon: ({ color, size }) => <Globe color={color} size={size} />,
+							tabBarIcon: ({ color, size }) => (
+								<Globe color={color} size={size} />
+							),
 						}}
 					/>
 					<Tabs.Screen
 						name="connections"
 						options={{
 							title: "Friends",
-							tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
+							tabBarIcon: ({ color, size }) => (
+								<Users color={color} size={size} />
+							),
 						}}
 					/>
 					<Tabs.Screen
 						name="memories"
 						options={{
 							title: "Memories",
-							tabBarIcon: ({ color, size }) => <Image color={color} size={size} />,
+							tabBarIcon: ({ color, size }) => (
+								<Image color={color} size={size} />
+							),
 						}}
 					/>
 					<Tabs.Screen
 						name="discover"
 						options={{
 							title: "Discover",
-							tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
+							tabBarIcon: ({ color, size }) => (
+								<Search color={color} size={size} />
+							),
 						}}
 					/>
 				</Tabs>

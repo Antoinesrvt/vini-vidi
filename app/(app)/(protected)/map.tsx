@@ -4,6 +4,7 @@ import { Globe, Plus, Calendar, MapPin, Users, MessageCircle, Heart, X, Video, P
 import { router } from 'expo-router';
 import { useLocation } from "@/context/location-context";
 import { AnimatePresence, MotiView } from 'moti';
+// import MapView, { Marker } from 'react-native-maps';
 
 // Types
 type Story = {
@@ -224,6 +225,42 @@ const MapScreen = () => {
               ))}
             </ScrollView>
           </View>
+
+          {/* Interactive Map View */}
+          <TouchableOpacity 
+            onPress={() => router.push('/(app)/(protected)/location-picker')}
+            className="px-4"
+          >
+            <View className="h-64 rounded-xl overflow-hidden">
+              {/* <MapView
+                style={{ width: '100%', height: '100%' }}
+                initialRegion={{
+                  latitude: 40.7128,
+                  longitude: -74.0060,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}
+                pitchEnabled={false}
+                rotateEnabled={false}
+                zoomEnabled={false}
+                scrollEnabled={false}
+              >
+                <Marker
+                  coordinate={{
+                    latitude: 40.7128,
+                    longitude: -74.0060,
+                  }}
+                />
+              </MapView> */}
+              {/* Overlay to make it look interactive */}
+              <View className="absolute inset-0 bg-black/5 flex items-center justify-center">
+                <View className="bg-white/90 px-4 py-2 rounded-full flex-row items-center">
+                  <MapPin className="w-4 h-4 text-blue-500 mr-2" />
+                  <Text className="text-sm font-medium">Change Location</Text>
+                </View>
+              </View>
+            </View>
+          </TouchableOpacity>
 
           {/* Map View */}
           <View className="px-4">
